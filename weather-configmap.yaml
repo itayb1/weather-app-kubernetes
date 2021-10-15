@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weather
+  namespace: lfs158
+data:
+  FETCH_INTERVAL: '5'
+  CITY: tel-aviv
+  HTML_LOCATION: /app/host-vol
+
+
