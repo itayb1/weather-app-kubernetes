@@ -4,7 +4,6 @@ metadata:
   name: weather
   namespace: lfs158
 spec:
-  type: NodePort
   selector:
     app: weather
   ports:
@@ -12,4 +11,3 @@ spec:
       protocol: TCP
       port: 4242
       targetPort: 80
-      nodePort: 30008
