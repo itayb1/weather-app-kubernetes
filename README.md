@@ -6,11 +6,11 @@
 - [x] Secrets and ConfigMaps
 - [x] Ingress
 - [x] Service
-- [] Persistent Volume
+- [ ] Persistent Volume
     - [X] hostPath and PVC
-    - [] NFS
-- [] Security Contexts
-- [] CI/CD Pipelines
-- [] Helm Chart
-- [] Autoscale
-- [] Bootstrap with kubeadm a multi-node cluster
+    - [ ] NFS
+- [ ] Security Contexts
+- [ ] CI/CD Pipelines
+- [ ] Helm Chart
+- [ ] Autoscale
+- [ ] Bootstrap with kubeadm a multi-node cluster
