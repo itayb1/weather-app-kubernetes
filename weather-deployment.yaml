@@ -20,7 +20,7 @@ spec:
         image: itaybs/weather-fetcher:7
         volumeMounts:
         - mountPath: /app/host-vol
-          name: host-volume
+          name: weather-pv-volume
         envFrom:
         - configMapRef:
             name: weather
@@ -39,7 +39,7 @@ spec:
         
         volumeMounts:
         - mountPath: /usr/share/nginx/html
-          name: host-volume
+          name: weather-pv-volume
         
         startupProbe:
           exec:
@@ -61,3 +61,6 @@ spec:
       - name: host-volume
         hostPath:
           path: /home/docker/test
+      - name: weather-pv-volume
+        persistentVolumeClaim:
+          claimName: weather-pv-claim

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: lfs158
+  name: weather-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual-weather #  Can only be bound to PVCs requesting that class
+  capacity: 
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce # Can be mounted as read-write by a single Node
+  hostPath:
+    path: "/home/docker/test-pv"

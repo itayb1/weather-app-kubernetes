@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: lfs158
+  name: weather-pv-claim
+spec:
+  storageClassName: manual-weather # PV storage class
+  accessModes:
+    - ReadWriteOnce # PV must support ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi # Request for at least 2 Giga
