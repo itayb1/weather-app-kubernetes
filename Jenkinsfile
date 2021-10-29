@@ -15,4 +15,7 @@ docker image tag "${APP_NAME}:latest" $REMOTE_IMAGE && docker image push $REMOTE
     }
 
   }
+  environment {
+    APP_NAME = 'weather-fetcher'
+  }
 }
