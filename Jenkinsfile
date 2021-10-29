@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Build Dockerfile') {
       steps {
+        sh 'hostname'
         echo 'Building ${APP_NAME}'
         sh 'docker build . --tag "${APP_NAME}:latest"'
       }
