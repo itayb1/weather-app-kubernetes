@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh 'hostname'
         echo 'Building ${APP_NAME}'
-        sh 'docker build . --tag "${APP_NAME}:latest"'
+        sh 'docker build ./scripts/weather --tag "${APP_NAME}:latest"'
       }
     }
 
