@@ -3,6 +3,7 @@ pipeline {
   environment {
     REGISTRY_ACCOUNT = "itaybs"
     REGISTRY_REPOSITORY = "weather-fetcher"
+    REGISTRY_CREDS = credentials('itaybs-dockerhub')
     dockerImage = ''
   }
   stages {
@@ -17,7 +18,7 @@ pipeline {
     stage('Push') {
       steps {
         script {
-          docker.withRegistry('', itaybs-dockerhub) {
+          docker.withRegistry('', REGISTRY_CREDS) {
             dockerImage.push()
           }
         }
