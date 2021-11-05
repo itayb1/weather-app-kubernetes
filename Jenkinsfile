@@ -12,6 +12,7 @@ pipeline {
         script {
           dockerImage = docker.build REGISTRY_ACCOUNT + "/" + REGISTRY_REPOSITORY + ":$BUILD_NUMBER"
         }
+      }
     }
     stage('Push') {
       steps {
