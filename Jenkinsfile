@@ -10,6 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo $BUILD_NUMBER'
+        sh 'echo $REGISTRY_CREDS'
         script {
           dockerImage = docker.build(REGISTRY_ACCOUNT + "/" + REGISTRY_REPOSITORY + ":$BUILD_NUMBER", "./scripts/weather")
         }
