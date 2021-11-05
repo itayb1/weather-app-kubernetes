@@ -1,23 +1,31 @@
 pipeline {
   agent any
-  stages {
-    stage('Build Dockerfile') {
-      steps {
-        sh 'hostname'
-        echo 'Building ${APP_NAME}'
-        sh 'docker build ./scripts/weather --tag "${APP_NAME}:latest"'
-      }
-    }
-
-    stage('Tag & Push') {
-      steps {
-        sh '''REMOTE_IMAGE="itaybs/${APP_NAME}:latest"
-docker image tag "${APP_NAME}:latest" $REMOTE_IMAGE && docker image push $REMOTE_IMAGE'''
-      }
-    }
-
-  }
   environment {
-    APP_NAME = 'weather-fetcher'
+    REGISTRY_ACCOUNT = "itaybs"
+    REGISTRY_REPOSITORY = "weather-fetcher"
+    dockerImage = ''
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'echo $BUILD_NUMBER'
+        script {
+          dockerImage = docker.build REGISTRY_ACCOUNT + "/" + REGISTRY_REPOSITORY + ":$BUILD_NUMBER"
+        }
+    }
+    stage('Push') {
+      steps {
+        script {
+          docker.withRegistry('', itaybs-dockerhub) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Cleaning up') {
+      steps {
+        sh "docker rmi $REGISTRY_ACCOUNT/$REGISTRY_REPOSITORY:$BUILD_NUMBER"
+      }
+    }
   }
 }
