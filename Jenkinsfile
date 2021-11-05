@@ -32,7 +32,7 @@ pipeline {
   environment {
     REGISTRY_ACCOUNT = 'itaybs'
     REGISTRY_REPOSITORY = 'weather-fetcher'
-    REGISTRY_CREDS = credentials('itaybs-dockerhub')
+    REGISTRY_CREDS = 'itaybs-dockerhub'
     dockerImage = ''
   }
 }
