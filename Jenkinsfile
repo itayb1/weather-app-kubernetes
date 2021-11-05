@@ -14,6 +14,12 @@ pipeline {
     stage('Push') {
       steps {
         echo 'test'
+        script {
+          docker.withRegistry('', REGISTRY_CREDS) {
+            dockerImage.push()
+          }
+        }
+
       }
     }
 
