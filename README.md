@@ -8,9 +8,12 @@
 - [x] Service
 - [ ] Persistent Volume
     - [X] hostPath and PVC
-    - [ ] NFS
-- [ ] Security Contexts
-- [ ] CI/CD Pipelines
+    - [X] NFS
 - [ ] Helm Chart
+- [ ] CI/CD Pipelines
+- [ ] SDN - Weave or Flannel 
+- [ ] Security Contexts
 - [ ] Autoscale
 - [ ] Bootstrap with kubeadm a multi-node cluster
+
+Jenkins password is 0rObqDKorNiUqT9zY6ehkm

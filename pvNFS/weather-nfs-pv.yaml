@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: weather-nfs-pv
+spec:
+  storageClass: weather-manual-nfs
+  capacity:
+    storage: 2Gi
+    accessModes:
+      - ReadWriteMany
+    nfs:
+      server: host.minikube.internal
+      path: "/"

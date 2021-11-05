@@ -7,12 +7,11 @@ pipeline {
         script {
           dockerImage = docker.build(REGISTRY_ACCOUNT + "/" + REGISTRY_REPOSITORY + ":$BUILD_NUMBER", "./scripts/weather")
         }
-
       }
     }
-
     stage('Push') {
       steps {
+        sh 'echo "Pushing image!"'
         script {
           docker.withRegistry('', REGISTRY_CREDS) {
             dockerImage.push()
@@ -21,13 +20,11 @@ pipeline {
 
       }
     }
-
     stage('Cleaning up') {
       steps {
         sh "docker rmi $REGISTRY_ACCOUNT/$REGISTRY_REPOSITORY:$BUILD_NUMBER"
       }
     }
-
   }
   environment {
     REGISTRY_ACCOUNT = 'itaybs'
